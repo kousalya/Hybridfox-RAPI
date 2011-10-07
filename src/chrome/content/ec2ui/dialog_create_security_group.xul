@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://ec2ui/locale/ec2ui.dtd">
+
+<dialog id="ec2ui.dialog.registerimage"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    buttons="accept,cancel"
+    ondialogaccept="return ec2_SecGroupCreator.createGroup();"
+    ondialogcancel="return true;" onload="ec2_SecGroupCreator.init();"
+    title="&ec2ui.dialog.title.create_security_group;"
+    buttonlabelaccept="&ec2ui.dialog.button.accept.create_security_group.label;">
+
+    <script type="application/x-javascript" src="chrome://ec2ui/content/createsecgroupdialog.js" />
+    <script type="application/x-javascript" src="chrome://ec2ui/content/model.js" />
+    <script type="application/x-javascript" src="chrome://ec2ui/content/utils.js" />
+
+    <vbox flex="1">
+        <grid flex="1">
+            <columns>
+                <column />
+                <column />
+            </columns>
+            <rows>
+                <row>
+                    <label control="ec2ui.newsecgroup.name"
+                        value="&ec2ui.secgroups.new.name.label;:" />
+                    <hbox>
+                        <textbox id="ec2ui.newsecgroup.name" size="20"
+                            value="" />
+                    </hbox>
+                </row>
+                <row>
+                    <label control="ec2ui.newsecgroup.description"
+                        value="&ec2ui.secgroups.new.description.label;:" />
+                    <textbox id="ec2ui.newsecgroup.description" size="40"
+                        value="" />
+                </row>
+            </rows>
+        </grid>
+        <hbox>
+            <radiogroup id="ec2ui.newsecgroup.enableprot" orient="vertical">
+                <radio value="host" selected="true"
+                    label="&ec2ui.secgroups.new.enableprot.host;"/>
+                <radio value="network" selected="false"
+                    label="&ec2ui.secgroups.new.enableprot.network;"/>
+                <radio value="none" selected="false"
+                    label="&ec2ui.secgroups.new.enableprot.none;" />
+            </radiogroup>
+        </hbox>
+    </vbox>
+</dialog>

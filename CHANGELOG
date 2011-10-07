@@ -1,0 +1,50 @@
+Hybridfox Changelog
+--------------------
+1.6.000112
+- SUPPORT: For Firefox 6 and larger
+
+1.6.000104
+- FEATURE: Support for Amazon AWS Elastic Load Balancing
+- SUPPORT: For Openstack,ECC,EEE
+- Localized : To japanese 
+
+1.6.000083
+- SUPPORT: For Firefox 5
+
+1.6.000056
+- FIX: Issue #65,#66,#67
+- SUPPORT : For Openstack,ECC,EPC,EC2,A Much above Beta 
+
+1.6.000044
+- SUPPORT : For Openstack with some pinch of salt
+
+1.6.000041
+- SUPPORT: For Firefox 4
+
+1.6.000037
+- FEATURE: Added Japanese Endpoint
+
+1.6.000030
+- FEATURE: Now Add/Remove any Regions
+
+1.6.000027
+- FIX: Can't add region of local Eucalyptus
+
+1.6.000025
+- FEATURE: Added support for high memory Amazon instances
+
+1.6.000024
+- FEATURE: supports Amazon Asia Pacific region.
+- FIX: some tabs dont work with Eucalyptus.
+- FIX: region matching incorrectly done.
+
+1.6.000019
+- FIX: all of emi/eri/eki are not being listed
+
+1.6.000018
+- FEATURE: added support for Firefox 3.6.
+- FEATURE: added support for Eucalyptus 1.6.12
+- FIX: allow emi/eki/eri for Eucalyptus.
+- FIX: made public IP optional in Eucalyptus.
+- FIX: switching from EC2 to Eucalyptus does not List images.
+- FIX: added support for US West region.

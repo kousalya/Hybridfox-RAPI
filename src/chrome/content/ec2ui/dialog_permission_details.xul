@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://ec2ui/locale/ec2ui.dtd">
+
+<dialog id="ec2ui.dialog.permission.detail" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	buttons="accept" ondialogaccept="return true;"
+	onload="ec2_PermissionDetails.init();" title="&ec2ui.dialog.title.permission_details;">
+
+	<script type="application/x-javascript" src="chrome://ec2ui/content/permissiondetaildialog.js" />
+	<script type="application/x-javascript" src="chrome://ec2ui/content/model.js" />
+
+	<vbox flex="1">
+		<grid flex="1">
+			<columns>
+				<column />
+				<column />
+				<column />
+			</columns>
+			<rows>
+				<row>
+					<label control="ec2ui.permission.protocol" value="&ec2ui.permissions.protocol.label;:" />
+					<textbox id="ec2ui.permission.protocol" size="40" readonly="true" />
+				</row>
+				<row>
+					<label control="ec2ui.permission.fromport" value="&ec2ui.permissions.fromport.label;:" />
+					<textbox id="ec2ui.permission.fromport" size="40" readonly="true" />
+				</row>
+				<row>
+					<label control="ec2ui.permission.toport" value="&ec2ui.permissions.toport.label;:" />
+					<textbox id="ec2ui.permission.toport" size="40" readonly="true" />
+				</row>
+				<row>
+					<label control="ec2ui.permission.sourcecidr" value="&ec2ui.permissions.cidrs.label;:" />
+					<textbox id="ec2ui.permission.sourcecidr" size="40" readonly="true" />
+				</row>
+				<row>
+					<label control="ec2ui.permission.sourceusergroup" value="&ec2ui.permissions.details.groups.label;:" />
+					<textbox id="ec2ui.permission.sourceusergroup" size="40" readonly="true" />
+				</row>
+			</rows>
+		</grid>
+	</vbox>
+</dialog>
+

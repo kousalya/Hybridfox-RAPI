@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://ec2ui/locale/ec2ui.dtd">
+
+<dialog id="ec2ui.dialog.manageendpoints" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  buttons="extra2,extra1,cancel" ondialogcancel="return true;"
+  ondialogextra1="ec2ui_endpointManager.saveEndpoint();"
+  ondialogextra2="ec2ui_endpointManager.removeEndpoint();"
+  buttonlabelcancel="&ec2ui.dialog.button.cancel.manage.label;"
+  buttonlabelextra1="&ec2ui.dialog.button.extra1.manage.label;"
+  buttonlabelextra2="&ec2ui.dialog.button.extra2.manage.label;"
+  defaultButton="extra1" buttonpack="start" buttonalign="start"
+  onload="ec2ui_endpointManager.initDialog();" title="&ec2ui.dialog.title.manage_endpoints;">
+
+  <script type="application/x-javascript" src="chrome://ec2ui/content/utils.js" />
+  <script type="application/x-javascript" src="chrome://ec2ui/content/preferences.js" />
+  <script type="application/x-javascript" src="chrome://ec2ui/content/model.js" />
+  <script type="application/x-javascript" src="chrome://ec2ui/content/endpoint_manager.js" />
+  <script type="application/x-javascript" src="chrome://ec2ui/content/endpointsview.js" />
+
+  <vbox flex="1">
+    <vbox flex="1">
+      <tree id="ec2ui.endpoints.view" onselect="ec2ui_endpointManager.selectMapping();" flex="1" rows="5">
+        <treecols>
+          <treecol id="endpoint.name" label="&ec2ui.endpoints.name.label;" flex="1" persist="width ordinal hidden" />
+          <treecol id="endpoint.type" label="&ec2ui.endpoints.type.label;" flex="1" persist="width ordinal hidden" />
+          <treecol id="endpoint.url" label="&ec2ui.endpoints.url.label;" flex="1" persist="width ordinal hidden" />
+          <!--
+          <treecol id="endpoint.version" label="&ec2ui.endpoints.version.label;" flex="1" persist="width ordinal hidden" />
+          -->
+        </treecols>
+        <treechildren />
+      </tree>
+    </vbox>
+
+    <grid>
+      <columns>
+        <column />
+        <column />
+      </columns>
+      <rows>
+        <row>
+          <label control="ec2ui.endpoints.name" value="&ec2ui.endpoints.name.label;:" />
+          <textbox id="ec2ui.endpoints.name" size="20" />
+        </row>
+        <row>
+          <label control="ec2ui.endpoints.type" value="&ec2ui.endpoints.type.label;:" />
+	  <menulist id="ec2ui.endpoints.type">
+	     <menupopup>
+		<menuitem id="ec2ui.endpoints.type.ec2" label="EC2" value="ec2"/>
+		<menuitem id="ec2ui.endpoints.type.euca" label="Eucalyptus" value="euca"/>
+		<menuitem d="ec2ui.endpoints.type.nova" label="Openstack" value="nova"/>
+	     </menupopup>
+	  </menulist>
+        </row>
+        <row>
+          <label control="ec2ui.endpoints.url" value="&ec2ui.endpoints.url.label;:" />
+          <textbox id="ec2ui.endpoints.url" size="40" />
+        </row>
+        <!--
+        <row>
+          <label control="ec2ui.endpoints.version" value="&ec2ui.endpoints.version.label;:" />
+          <textbox id="ec2ui.endpoints.version" size="40" />
+        </row>
+        -->
+      </rows>
+    </grid>
+  </vbox>
+</dialog>
