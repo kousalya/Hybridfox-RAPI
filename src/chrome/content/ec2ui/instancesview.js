@@ -101,7 +101,6 @@ var ec2ui_InstancesTreeView = {
     
     publictag : function(event){
         var SelectedInstances = this.getSelectedInstanceIds();
-        alert(SelectedInstances);
         var Tag = prompt(ec2ui_utils.getMessageProperty("ec2ui.msg.InstancesTreeView.confirm.Tag"));
         if (Tag == null)
             return;
