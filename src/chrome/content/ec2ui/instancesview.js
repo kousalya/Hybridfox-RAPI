@@ -2,6 +2,7 @@ var ec2ui_InstancesTreeView = {
     COLNAMES : [
        'instance.resId',
        'instance.ownerId',
+       'instance.publictag',
        'instance.id',
        'instance.imageId',
        'instance.kernelId',
@@ -96,6 +97,22 @@ var ec2ui_InstancesTreeView = {
         }
 
         return instanceIds;
+    },
+    
+    publictag : function(event){
+        var SelectedInstances = this.getSelectedInstanceIds();
+        alert(SelectedInstances);
+        var Tag = prompt(ec2ui_utils.getMessageProperty("ec2ui.msg.InstancesTreeView.confirm.Tag"));
+        if (Tag == null)
+            return;
+        Tag = Tag.trim();
+        var me = this;
+        var wrap = function() {
+            if (ec2ui_prefs.isRefreshOnChangeEnabled()) {
+                me.refresh();
+            }
+        }
+        ec2ui_session.controller.CreateInstanceTag(SelectedInstances,Tag,wrap); 
     },
 
     tag : function(event) {

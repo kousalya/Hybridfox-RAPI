@@ -9,7 +9,7 @@ function get_dir_revision() {
     local last_rev
 
     # Generate a release number for the entire branch
-    last_rev=$(hg log $1 -b default -l 1 | grep 'changeset')
+    last_rev=$(git log $1 branch master -l 1 | grep 'changeset')
     changeset=${last_rev#*:}
     pkg_release=${changeset%:*}
     if [ -z "$pkg_release" ] ; then

@@ -459,7 +459,7 @@ var ec2ui_controller = {
 
         for (var j = 0; j < instanceItems.length; j++) {
             if (instanceItems[j].nodeName == '#text') continue;
-
+		
             var instanceId = getNodeValueByName(instanceItems[j], "instanceId");
             var imageId = getNodeValueByName(instanceItems[j], "imageId");
 
@@ -493,10 +493,11 @@ var ec2ui_controller = {
                 var kernelId = getNodeValueByName(instanceItems[j], "kernelId");
                 var ramdiskId = getNodeValueByName(instanceItems[j], "ramdiskId");
             }
-
+	    var publictag = getNodeValueByName(instanceItems[j], "value");
             list.push(new Instance(resId,
                                    ownerId,
                                    groups,
+				   publictag,
                                    instanceId,
                                    imageId,
                                    kernelId || "",
@@ -1931,5 +1932,20 @@ var ec2ui_controller = {
         var items = getNodeValueByName(xmlDoc, "ServerCertificateMetadata");
         if (objResponse.callback)
             objResponse.callback(items);
+    },
+    
+    CreateInstanceTag : function(SelectedInstances,Tag,callback){
+       params = []
+       params.push(["ResourceId.1", SelectedInstances]);
+       params.push(["Tag.1.Key", Tag]);
+       params.push(["Tag.1.Value", Tag]);
+       ec2_httpclient.queryEC2("CreateTags", params, this, true, "oncompleteCreateInstanceTag", callback);  
+    },
+    
+    oncompleteCreateInstanceTag : function (objResponse) {
+        if (objResponse.callback) {
+            objResponse.callback();
+        }
     }
+    
 };

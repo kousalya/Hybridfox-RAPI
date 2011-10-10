@@ -14,6 +14,8 @@
             label="&ec2ui.contextmenu.details.label;" />
           <menuitem oncommand="ec2ui_InstancesTreeView.tag(event);"
             label="&ec2ui.addTag.label;" />
+          <menuitem oncommand="ec2ui_InstancesTreeView.publictag(event);"
+            label="&ec2ui.addTag.label;" />
           <menuseparator />
           <menuitem oncommand="ec2ui_InstancesTreeView.launchMore();"
             label="&ec2ui.instances.contextmenu.launchmore.label;" />
@@ -101,6 +103,9 @@
           <splitter class="tree-splitter" />
           <treecol id="instance.ownerId" label="&ec2ui.instances.owner.label;"
             flex="2" sortDirection="ascending" persist="width ordinal hidden sortDirection" />
+           <splitter class="tree-splitter" />
+          <treecol id="instance.publictag" label="Publictag"
+            flex="2" persist="width ordinal hidden sortDirection" />
           <splitter class="tree-splitter" />
           <treecol id="instance.id" label="&ec2ui.instances.id.label;"
             flex="2" persist="width ordinal hidden sortDirection" />
