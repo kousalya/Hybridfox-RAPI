@@ -99,9 +99,21 @@ var ec2ui_InstancesTreeView = {
         return instanceIds;
     },
     
-    publictag : function(event){
+    
+    getSelectedTag : function() {
+        var publictag = new Array();
+        for(var i in this.instanceList) {
+            if (this.selection.isSelected(i)) {
+                publictag.push(this.instanceList[i].publictag);
+            }
+        }
+
+        return publictag;
+    },
+    
+    createpublictag : function(event){
         var SelectedInstances = this.getSelectedInstanceIds();
-        var Tag = prompt(ec2ui_utils.getMessageProperty("ec2ui.msg.InstancesTreeView.confirm.Tag"));
+        var Tag = prompt(ec2ui_utils.getMessageProperty("ec2ui.msg.InstancesTreeView.confirm.Tag" ,[SelectedInstances]));
         if (Tag == null)
             return;
         Tag = Tag.trim();
@@ -113,6 +125,25 @@ var ec2ui_InstancesTreeView = {
         }
         ec2ui_session.controller.CreateInstanceTag(SelectedInstances,Tag,wrap); 
     },
+    
+    deletepublictag : function(event){
+        var InstancesId = this.getSelectedInstanceIds();
+        var publictag = this.getSelectedTag();
+        
+        var confirmed = confirm(ec2ui_utils.getMessageProperty("ec2ui.msg.instancesview.confirm.deletetag", [publictag]));
+        if (!confirmed)
+            return;
+
+        var me = this;
+        var wrap = function() {
+            if (ec2ui_prefs.isRefreshOnChangeEnabled()) {
+                me.refresh();
+                me.selectByInstanceIds();
+            }
+        }
+        ec2ui_session.controller.DeleteInstanceTag(InstancesId,publictag, wrap);
+        
+    },    
 
     tag : function(event) {
         var instances = this.getSelectedInstances();

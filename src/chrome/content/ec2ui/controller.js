@@ -1946,6 +1946,19 @@ var ec2ui_controller = {
         if (objResponse.callback) {
             objResponse.callback();
         }
+    },
+    
+    DeleteInstanceTag : function(InstancesId,publictag,callback){
+       params = []
+       params.push(["ResourceId.1", InstancesId]);
+       params.push(["Tag.1.Key", publictag]);
+       ec2_httpclient.queryEC2("DeleteTags", params, this, true, "oncompleteDeleteInstanceTag", callback);  
+    },
+    
+    oncompleteDeleteInstanceTag : function (objResponse) {
+        if (objResponse.callback) {
+            objResponse.callback();
+        }
     }
     
 };
