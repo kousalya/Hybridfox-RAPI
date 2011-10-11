@@ -34,6 +34,7 @@ var ec2ui_VolumeTreeView = {
         ec2ui_session.showBusyCursor(false);
     },
 
+    //adding invalidate
     invalidate : function() {
         var target = ec2ui_VolumeTreeView;
         target.displayImages(target.filterImages(ec2ui_model.volumes));
